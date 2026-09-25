@@ -1,0 +1,75 @@
+@{
+    Layout = null;
+    var nombre = Convert.ToString(Session["NombreUsuario"]);
+    var rol = Convert.ToString(Session["RolUsuario"]);
+    var correo = Convert.ToString(Session["CorreoUsuario"]);
+    var telefono = Convert.ToString(Session["TelefonoUsuario"]);
+    if (String.IsNullOrWhiteSpace(nombre)) { nombre = User.Identity.Name; }
+    if (String.IsNullOrWhiteSpace(nombre)) { nombre = "Usuario"; }
+    if (String.IsNullOrWhiteSpace(rol)) { rol = "Usuario"; }
+    var iniciales = String.Join("", nombre.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries)
+        .Take(2).Select(s => s.Substring(0, 1).ToUpper()));
+}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@(ViewBag.Title ?? "Panel") | PATRIA</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+    <link href="~/Content/style/layout/LayoutPatria.css" rel="stylesheet" />
+    @RenderSection("styles", required: false)
+</head>
+<body>
+<div class="app-shell" id="appShell">
+    <aside class="sidebar" id="sidebar">
+        <a class="sidebar-brand" href="@Url.Action("Index", "Home")" aria-label="PATRIA inicio">
+            <img src="@Url.Content("~/Content/Imagenes/patria-logo-sidebar.png")" alt="PATRIA" />
+        </a>
+        <nav class="side-nav" aria-label="Menú principal">
+            <a class="nav-link @(ViewBag.MenuActivo == "Inicio" ? "active" : "")" href="@Url.Action("Index", "Home")">
+                <img src="~/Content/Imagenes/house.svg" /><span>Inicio</span>
+            </a>
+            <a class="nav-link @(ViewBag.MenuActivo == "Avance" ? "active" : "")" href="@Url.Action("Index", "AvanceElectoral")"><i class="fa-solid fa-chart-column"></i><span>Avance Electoral</span></a>
+            <a class="nav-link @(ViewBag.MenuActivo == "Casillas" ? "active" : "")" href="@Url.Action("Index", "Casillas")"><i class="fa-regular fa-map"></i><span>Casillas</span></a>
+            <a class="nav-link @(ViewBag.MenuActivo == "Reportes" ? "active" : "")" href="@Url.Action("Index", "Reportes")"><i class="fa-regular fa-file-lines"></i><span>Reportes</span></a>
+            <a class="nav-link @(ViewBag.MenuActivo == "Usuarios" ? "active" : "")" href="@Url.Action("Index", "Usuarios")"><i class="fa-regular fa-user"></i><span>Usuarios</span></a>
+            <a class="nav-link @(ViewBag.MenuActivo == "Configuracion" ? "active" : "")" href="@Url.Action("Index", "Configuracion")"><i class="fa-solid fa-gear"></i><span>Configuración</span></a>
+        </nav>
+        <div class="sidebar-footer"><span>COLIMA</span><small>NUESTRAS RAÍCES<br />TAMBIÉN DECIDEN</small><i></i></div>
+    </aside>
+
+    <div class="main-area">
+        <header class="topbar">
+            <button class="icon-button menu-toggle" id="menuToggle" type="button" aria-label="Abrir o cerrar menú"><i class="fa-solid fa-bars"></i></button>
+            <div class="project-name"><strong>@(ViewBag.NombreProyecto ?? "PATRIA")</strong><small>Panel de seguimiento</small></div>
+            <div class="topbar-spacer"></div>
+            <button class="icon-button notification-button" type="button" aria-label="Notificaciones"><i class="fa-regular fa-bell"></i><b></b></button>
+            <span class="topbar-divider"></span>
+            <div class="user-menu-wrap">
+                <button type="button" class="user-menu-trigger" id="userMenuTrigger" aria-haspopup="dialog" aria-expanded="false">
+                    <span class="avatar">@iniciales</span><span class="user-label"><strong>@nombre</strong><small>@rol</small></span><i class="fa-solid fa-chevron-down user-chevron"></i>
+                </button>
+                <div class="user-popover" id="userPopover" role="dialog" aria-label="Información del usuario" hidden>
+                    <div class="popover-heading"><span class="avatar avatar-large">@iniciales</span><div><strong>@nombre</strong><small>@rol</small></div></div>
+                    <div class="contact-info">
+                        <div><i class="fa-regular fa-envelope"></i><span>@(String.IsNullOrWhiteSpace(correo) ? "Correo no disponible" : correo)</span></div>
+                        <div><i class="fa-solid fa-phone"></i><span>@(String.IsNullOrWhiteSpace(telefono) ? "Teléfono no disponible" : telefono)</span></div>
+                    </div>
+                    <div class="popover-actions">
+                        @using (Html.BeginForm("Logout", "Account", FormMethod.Post)) {
+                            @Html.AntiForgeryToken()
+                            <button type="submit" class="logout-button"><i class="fa-solid fa-arrow-right-from-bracket"></i> Cerrar sesión</button>
+                        }
+                    </div>
+                </div>
+            </div>
+        </header>
+        <main class="page-content">@RenderBody()</main>
+    </div>
+</div>
+<div class="mobile-scrim" id="mobileScrim"></div>
+<script src="@Url.Content("~/Scripts/layout/LayoutPatria.js")"></script>
+@RenderSection("scripts", required: false)
+</body>
+</html>

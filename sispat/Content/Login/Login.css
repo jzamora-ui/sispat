@@ -1,0 +1,698 @@
+﻿/* =========================================================
+   VARIABLES
+   ========================================================= */
+:root {
+    --vino: #7f2841;
+    --vino-dark: #651d32;
+    --vino-light: #a8445f;
+    --texto: #24262b;
+    --gris: #68707a;
+    --borde: #d8d9dc;
+    --fondo: #f5f2ee;
+    --blanco: #ffffff;
+    --sombra: 0 24px 70px rgba(30, 20, 20, .18);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html, body {
+    width: 100%;
+    min-height: 100%;
+    margin: 0;
+}
+
+body {
+    font-family: "Segoe UI", Arial, Helvetica, sans-serif;
+    color: var(--texto);
+    background: #eeeae6;
+    overflow-x: hidden;
+}
+
+/* =========================================================
+   LAYOUT BASE — 2 columnas de fondo
+   ========================================================= */
+.login-page {
+    position: relative;
+    min-height: 100vh;
+    min-height: 100dvh;
+    display: grid;
+    grid-template-columns: 39.2% 60.8%;
+    background: var(--fondo);
+}
+
+/* =========================================================
+   COLUMNA IZQUIERDA — VINO
+   (usa login-bg-left.jpg en /Content/Imagenes/)
+   ========================================================= */
+.brand-side {
+    position: relative;
+    min-height: 100vh;
+    min-height: 100dvh;
+    overflow: hidden;
+    background: linear-gradient(180deg, rgba(95, 22, 42, .92), rgba(127, 40, 65, .97)), url("../Imagenes/aguila2.png") center / cover no-repeat;
+}
+
+.brand-side__overlay {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 55% 35%, rgba(255,255,255,.07), transparent 28%), linear-gradient(135deg, transparent 20%, rgba(255,255,255,.035) 20%, transparent 21%);
+}
+
+.brand-side__quote {
+    position: absolute;
+    left: 16%;
+    bottom: 8.5%;
+    display: flex;
+    flex-direction: column;
+    color: rgba(255,255,255,.8);
+    font-size: clamp(10px, .9vw, 15px);
+    letter-spacing: .38em;
+    line-height: 1.85;
+}
+
+    .brand-side__quote i {
+        width: 48px;
+        height: 2px;
+        margin-top: 18px;
+        background: rgba(255,255,255,.75);
+    }
+
+/* =========================================================
+   COLUMNA DERECHA — FOTO
+   (usa login-bg-right.jpg en /Content/Imagenes/)
+   ========================================================= */
+.photo-side {
+    position: relative;
+    min-height: 100vh;
+    min-height: 100dvh;
+    overflow: hidden;
+    background: linear-gradient(rgba(250,248,245,.22), rgba(250,248,245,.55)), url("../Imagenes/colima.png") center / cover no-repeat;
+}
+
+.photo-side__overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, rgba(255,255,255,.2), rgba(255,255,255,.03));
+    pointer-events: none;
+}
+
+.photo-side__top {
+    position: absolute;
+    right: 10%;
+    top: 5.5%;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    color: #5d5b5b;
+    letter-spacing: .48em;
+}
+
+    .photo-side__top strong {
+        font-size: clamp(13px, 1vw, 17px);
+        font-weight: 500;
+    }
+
+    .photo-side__top span {
+        width: 48px;
+        height: 2px;
+        margin: 13px 0 16px;
+        background: var(--vino);
+    }
+
+    .photo-side__top small {
+        font-size: clamp(10px, .8vw, 13px);
+        margin: 3px 0;
+    }
+
+.photo-side__bottom {
+    position: absolute;
+    left: 10%;
+    bottom: 6%;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    color: #686567;
+    letter-spacing: .23em;
+    font-size: 12px;
+}
+
+    .photo-side__bottom i {
+        width: 42px;
+        height: 1px;
+        background: #696969;
+    }
+
+/* =========================================================
+   CARD CENTRADO (flota sobre las dos columnas)
+   ========================================================= */
+.login-card {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+    width: min(560px, 90vw);
+    max-height: calc(100vh - 48px);
+    max-height: calc(100dvh - 48px);
+    overflow-y: auto;
+    padding: 48px 48px 40px;
+    background: rgba(255,255,255,.97);
+    border: 1px solid rgba(255,255,255,.9);
+    border-radius: 22px;
+    box-shadow: var(--sombra);
+    backdrop-filter: blur(9px);
+    -webkit-backdrop-filter: blur(9px);
+}
+
+/* =========================================================
+   LOGO / PATRIA
+   (usa patria-eagle.png en /Content/Imagenes/)
+   ========================================================= */
+.brand {
+    text-align: center;
+    margin-bottom: 8px;
+}
+
+.eagle-wrap {
+    height: 160px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.eagle-logo {
+    width: 210px;
+    max-width: 70%;
+    height: auto;
+    object-fit: contain;
+    mix-blend-mode: multiply;
+    transition: transform .45s ease, filter .45s ease;
+    height:210px;
+}
+
+.brand:hover .eagle-logo {
+    transform: translateY(-5px) scale(1.035);
+    filter: drop-shadow(0 8px 14px rgba(127,40,65,.2));
+}
+
+.patria-word {
+    display: inline-flex;
+    color: var(--vino);
+    font-size: clamp(38px, 4vw, 58px);
+    line-height: .9;
+    font-weight: 900;
+    letter-spacing: -.045em;
+    cursor: default;
+}
+
+    .patria-word span {
+        display: inline-block;
+        transition: transform .28s ease, color .28s ease, text-shadow .28s ease;
+    }
+
+    .patria-word:hover span {
+        color: var(--vino-dark);
+        text-shadow: 0 7px 16px rgba(127,40,65,.18);
+    }
+
+        .patria-word:hover span:nth-child(1) {
+            transform: translateY(-8px) rotate(-3deg);
+        }
+
+        .patria-word:hover span:nth-child(2) {
+            transform: translateY(-12px) rotate(2deg);
+            transition-delay: .03s;
+        }
+
+        .patria-word:hover span:nth-child(3) {
+            transform: translateY(-15px) rotate(-2deg);
+            transition-delay: .06s;
+        }
+
+        .patria-word:hover span:nth-child(4) {
+            transform: translateY(-12px) rotate(2deg);
+            transition-delay: .09s;
+        }
+
+        .patria-word:hover span:nth-child(5) {
+            transform: translateY(-8px) rotate(-2deg);
+            transition-delay: .12s;
+        }
+
+        .patria-word:hover span:nth-child(6) {
+            transform: translateY(-5px) rotate(3deg);
+            transition-delay: .15s;
+        }
+
+/* =========================================================
+   TÍTULOS
+   ========================================================= */
+.login-card h1 {
+    margin: 22px 0 5px;
+    text-align: center;
+    font-size: clamp(22px, 1.8vw, 30px);
+    font-weight: 750;
+    color: #1f2227;
+    margin-top:0px;
+}
+
+.subtitle {
+    margin: 0 0 26px;
+    text-align: center;
+    color: #71757b;
+    font-size: 16px;
+}
+
+/* =========================================================
+   CAMPOS
+   ========================================================= */
+.field {
+    position: relative;
+    margin-bottom: 14px;
+}
+
+.form-control {
+    width: 100%;
+    height: 60px;
+    padding: 0 50px 0 64px;
+    border: 1px solid #cfd1d5;
+    border-radius: 11px;
+    outline: none;
+    background: #fff;
+    color: #24262b;
+    font-size: 17px;
+    transition: border-color .25s ease, box-shadow .25s ease;
+}
+
+    .form-control::placeholder {
+        color: #8b8f95;
+    }
+
+    .form-control:focus {
+        border-color: var(--vino);
+        box-shadow: 0 0 0 4px rgba(127,40,65,.10);
+    }
+
+.field-icon {
+    position: absolute;
+    z-index: 2;
+    left: 22px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #666d75;
+    font-size: 22px;
+    pointer-events: none;
+}
+
+.field-line {
+    position: absolute;
+    left: 15px;
+    right: 15px;
+    bottom: 0;
+    height: 2px;
+    border-radius: 3px;
+    background: var(--vino);
+    transform: scaleX(0);
+    transform-origin: center;
+    transition: transform .25s ease;
+}
+
+.field:focus-within .field-line {
+    transform: scaleX(1);
+}
+
+.password-toggle {
+    position: absolute;
+    z-index: 3;
+    right: 15px;
+    top: 50%;
+    width: 36px;
+    height: 36px;
+    transform: translateY(-50%);
+    border: 0;
+    background: transparent;
+    color: #68707a;
+    cursor: pointer;
+    font-size: 19px;
+}
+
+    .password-toggle:hover {
+        color: var(--vino);
+    }
+
+/* =========================================================
+   RECAPTCHA INFO
+   ========================================================= */
+.recaptcha-box {
+    min-height: 74px;
+    margin: 14px 0 18px;
+    padding: 12px 16px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    border: 1px solid #d8dadd;
+    border-radius: 10px;
+    background: #fafafa;
+}
+
+.recaptcha-icon {
+    width: 40px;
+    height: 40px;
+    flex: 0 0 40px;
+    display: grid;
+    place-items: center;
+    border: 2px solid #7c8188;
+    border-radius: 50%;
+    color: #59616a;
+}
+
+.recaptcha-box strong {
+    display: block;
+    font-size: 13px;
+    font-weight: 600;
+    color: #4b5158;
+}
+
+.recaptcha-box small {
+    display: block;
+    margin-top: 3px;
+    color: #73777d;
+    font-size: 11px;
+    line-height: 1.35;
+}
+
+/* =========================================================
+   BOTÓN LOGIN
+   ========================================================= */
+.btn-login {
+    width: 100%;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 18px;
+    border: 0;
+    border-radius: 10px;
+    background: linear-gradient(135deg, var(--vino), #8d2947);
+    color: #fff;
+    font-size: 19px;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 10px 22px rgba(127,40,65,.18);
+    transition: transform .22s ease, box-shadow .22s ease, filter .22s ease;
+}
+
+    .btn-login i {
+        transition: transform .22s ease;
+    }
+
+    .btn-login:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 15px 30px rgba(127,40,65,.25);
+        filter: brightness(1.04);
+    }
+
+        .btn-login:hover i {
+            transform: translateX(7px);
+        }
+
+    .btn-login:active {
+        transform: translateY(0);
+    }
+
+    .btn-login.loading {
+        pointer-events: none;
+        opacity: .78;
+    }
+
+/* =========================================================
+   FORGOT
+   ========================================================= */
+.forgot {
+    display: block;
+    margin-top: 22px;
+    text-align: center;
+    color: var(--vino);
+    font-size: 16px;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+    .forgot:hover {
+        text-decoration: underline;
+    }
+
+/* =========================================================
+   ERRORES
+   ========================================================= */
+.text-danger {
+    display: block;
+    margin: 6px 0 10px;
+    color: #c62828;
+    font-size: 13px;
+}
+
+    .text-danger ul {
+        margin: 0;
+        padding-left: 18px;
+        list-style: disc;
+    }
+
+.input-error {
+    border-color: #c62828 !important;
+    box-shadow: 0 0 0 4px rgba(198,40,40,.08) !important;
+}
+
+/* =========================================================
+   TABLET (≤1024px) — se oculta la columna vino
+   ========================================================= */
+@media (max-width: 1024px) {
+    .login-page {
+        grid-template-columns: 1fr;
+        min-height: 100vh;
+        min-height: 100dvh;
+    }
+
+    .brand-side {
+        display: none;
+    }
+
+    .photo-side {
+        min-height: 100vh;
+        min-height: 100dvh;
+        background: linear-gradient(rgba(127,40,65,.55), rgba(245,242,238,.85)), url("../Imagenes/login-bg-right.jpg") center / cover no-repeat;
+        background-attachment: scroll;
+    }
+
+    .login-card {
+        width: min(560px, calc(100% - 48px));
+        padding: 40px 36px 34px;
+    }
+}
+
+/* =========================================================
+   CELULAR (≤700px) — el card pasa a flujo normal
+   ========================================================= */
+@media (max-width: 700px) {
+    .login-card {
+        position: relative;
+        top: auto;
+        left: auto;
+        transform: none;
+        width: calc(100% - 28px);
+        max-height: none;
+        overflow: visible;
+        margin: 24px auto;
+        padding: 30px 24px 28px;
+        border-radius: 18px;
+    }
+
+    .eagle-wrap {
+        height: 120px;
+    }
+
+    .eagle-logo {
+        width: 170px;
+    }
+
+    .patria-word {
+        font-size: clamp(36px, 10vw, 48px);
+    }
+
+    .login-card h1 {
+        margin-top: 18px;
+        font-size: 22px;
+    }
+
+    .subtitle {
+        font-size: 14px;
+        margin-bottom: 22px;
+    }
+
+    .form-control {
+        height: 54px;
+        font-size: 15px;
+        padding: 0 44px 0 56px;
+    }
+
+    .field-icon {
+        left: 16px;
+        font-size: 19px;
+    }
+
+    .password-toggle {
+        right: 10px;
+        font-size: 17px;
+    }
+
+    .recaptcha-box {
+        align-items: flex-start;
+        padding: 10px 12px;
+        gap: 10px;
+        min-height: auto;
+    }
+
+    .btn-login {
+        height: 54px;
+        font-size: 17px;
+        gap: 14px;
+    }
+
+    .forgot {
+        font-size: 14px;
+        margin-top: 16px;
+    }
+
+    .photo-side__top,
+    .photo-side__bottom {
+        display: none;
+    }
+}
+
+/* =========================================================
+   CELULAR PEQUEÑO (≤400px)
+   ========================================================= */
+@media (max-width: 400px) {
+    .login-card {
+        width: calc(100% - 20px);
+        padding: 24px 18px 22px;
+    }
+
+    .eagle-wrap {
+        height: 100px;
+    }
+
+    .eagle-logo {
+        width: 145px;
+    }
+
+    .patria-word {
+        font-size: 36px;
+    }
+
+    .login-card h1 {
+        font-size: 20px;
+    }
+
+    .subtitle {
+        font-size: 13px;
+    }
+
+    .form-control {
+        height: 50px;
+        font-size: 14px;
+        padding: 0 42px 0 50px;
+    }
+
+    .field-icon {
+        left: 14px;
+        font-size: 17px;
+    }
+
+    .recaptcha-icon {
+        width: 34px;
+        height: 34px;
+        flex: 0 0 34px;
+    }
+
+    .recaptcha-box strong {
+        font-size: 12px;
+    }
+
+    .recaptcha-box small {
+        font-size: 10px;
+    }
+
+    .btn-login {
+        height: 50px;
+        font-size: 15px;
+    }
+
+    .forgot {
+        font-size: 13px;
+    }
+}
+
+/* =========================================================
+   LANDSCAPE con poca altura
+   ========================================================= */
+@media (max-height: 520px) and (orientation: landscape) {
+    .login-card {
+        position: relative;
+        top: auto;
+        left: auto;
+        transform: none;
+        margin: 12px auto;
+        padding: 18px 22px;
+        max-height: none;
+        overflow: visible;
+    }
+
+    .eagle-wrap {
+        height: 70px;
+    }
+
+    .eagle-logo {
+        width: 120px;
+    }
+
+    .patria-word {
+        font-size: 30px;
+    }
+
+    .login-card h1 {
+        margin: 10px 0 3px;
+        font-size: 18px;
+    }
+
+    .subtitle {
+        margin-bottom: 12px;
+        font-size: 12px;
+    }
+
+    .form-control {
+        height: 44px;
+        font-size: 14px;
+    }
+
+    .recaptcha-box {
+        min-height: auto;
+        margin: 8px 0 10px;
+        padding: 6px 10px;
+    }
+
+    .btn-login {
+        height: 44px;
+        font-size: 15px;
+    }
+
+    .forgot {
+        margin-top: 10px;
+        font-size: 12px;
+    }
+}

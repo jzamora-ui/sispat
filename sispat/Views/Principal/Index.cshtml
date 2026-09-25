@@ -1,0 +1,57 @@
+﻿@{
+    ViewBag.Title = "Inicio";
+    ViewBag.MenuActivo = "Inicio";
+    ViewBag.NombreProyecto = "PATRIA";
+    Layout = "~/Views/Shared/_Layout_Patria.cshtml";
+}
+
+@section Styles {
+    <link  href="~/Content/style/Inicio/Inicio.css" rel="stylesheet" />
+}
+
+<!-- Overlay de bienvenida (animación de entrada) -->
+<div id="welcome-overlay">
+    <div class="welcome-content">
+        <div class="welcome-line"></div>
+        <img id="imagen_inicio" src="~/Content/Imagenes/Patria2027.svg" />
+        <p class="welcome-subtitle">Bienvenido al sistema</p>
+    </div>
+</div>
+
+<!-- Contenido principal -->
+<main class="home-container">
+    <section class="hero-section">
+        <div class="hero-text">
+            <span class="hero-tag">Panel Principal</span>
+            <h2 class="hero-title">Bienvenido de nuevo</h2>
+            <p class="hero-description">
+                Gestiona, consulta y administra toda la información de tu sistema
+                desde un solo lugar. Todo lo que necesitas, a un clic de distancia.
+            </p>
+            <div class="hero-actions">
+                <a href="#" class="btn-primary">Comenzar</a>
+                <a href="#" class="btn-secondary">Ver reportes</a>
+            </div>
+        </div>
+        <div class="hero-graphic">
+            <div class="circle circle-1"></div>
+            <div class="circle circle-2"></div>
+            <div class="circle circle-3"></div>
+        </div>
+    </section>
+</main>
+
+@section Scripts {
+    <script>// Oculta el overlay al terminar la animación
+        window.addEventListener('load', function () {
+            setTimeout(function () {
+                var overlay = document.getElementById('welcome-overlay');
+                if (overlay) {
+                    overlay.classList.add('hidden');
+                    setTimeout(function () {
+                        overlay.style.display = 'none';
+                    }, 800);
+                }
+            }, 2200); // tiempo total de la animación
+        });</script>
+}

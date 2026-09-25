@@ -1,0 +1,288 @@
+﻿@model SiPat.Models.Login.login
+
+@{
+    ViewBag.Title = "Iniciar sesión";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="utf-8" />
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+
+    <title>Patria | Iniciar sesión</title>
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css" />
+
+    <link rel="stylesheet"
+          href="@Url.Content("~/Content/Login/Login.css")" />
+
+</head>
+
+<body>
+
+    <!-- ========================================================= -->
+    <!-- LOGIN PAGE                                                -->
+    <!-- ========================================================= -->
+
+    <main class="login-page">
+
+
+        <!-- ================================================= -->
+        <!-- FONDO IZQUIERDO (vino)                            -->
+        <!-- ================================================= -->
+
+        <aside class="brand-side" aria-hidden="true">
+
+            <div class="brand-side__overlay"></div>
+
+            <div class="brand-side__quote">
+                <span>NUESTRAS</span>
+                <span>RAÍCES</span>
+                <span>TAMBIÉN</span>
+                <span>DECIDEN</span>
+                <i></i>
+            </div>
+
+        </aside>
+
+
+
+        <!-- ================================================= -->
+        <!-- FONDO DERECHO (foto)                              -->
+        <!-- ================================================= -->
+
+        <section class="photo-side" aria-hidden="true">
+
+            <div class="photo-side__overlay"></div>
+
+            <div class="photo-side__top">
+                <strong>COLIMA</strong>
+                <span></span>
+                <small>TIERRA</small>
+                <small>GENTE</small>
+                <small>FUTURO</small>
+            </div>
+
+            <div class="photo-side__bottom">
+                <i></i>
+                <span>LA TRANSFORMACIÓN AVANZA CONTIGO</span>
+                <i></i>
+            </div>
+
+        </section>
+
+
+
+        <!-- ================================================= -->
+        <!-- CARD CENTRADO (flota sobre los dos fondos)        -->
+        <!-- ================================================= -->
+
+        <section class="login-card">
+
+
+            <!-- ============================================= -->
+            <!-- LOGO                                          -->
+            <!-- ============================================= -->
+
+            <div class="brand">
+
+                <div class="eagle-wrap">
+
+                    <img src="@Url.Content("~/Content/Imagenes/Patria2027.svg")"
+                         alt="Patria"
+                         class="eagle-logo" />
+
+                </div>
+
+            </div>
+
+
+
+            <!-- ============================================= -->
+            <!-- TITULO                                        -->
+            <!-- ============================================= -->
+
+            <h1>Te damos la Bienvenida</h1>
+
+            <p class="subtitle">Ingresa a tu cuenta para continuar</p>
+
+
+
+            <!-- ============================================= -->
+            <!-- FORMULARIO                                    -->
+            <!-- ============================================= -->
+
+            @using (Html.BeginForm(
+                "Login",
+                "Account",
+                FormMethod.Post,
+                new
+                {
+                    id = "loginForm",
+                    autocomplete = "off",
+                    novalidate = "novalidate"
+                }))
+            {
+                @Html.AntiForgeryToken()
+
+
+
+                <!-- USUARIO -->
+
+                <div class="field">
+
+                    <i class="fa-regular fa-user field-icon"></i>
+
+                    @Html.TextBoxFor(
+                             m => m.Usuario,
+                             new
+                             {
+                                 @class = "form-control",
+                                 id = "Usuario",
+                                 maxlength = "8",
+                                 minlength = "8",
+                                 autocomplete = "username",
+                                 placeholder = "Usuario",
+                                 aria_label = "Usuario"
+                             })
+
+                    <span class="field-line"></span>
+
+                </div>
+
+
+
+                <!-- CONTRASEÑA -->
+
+                <div class="field">
+
+                    <i class="fa-solid fa-lock field-icon"></i>
+
+                    @Html.PasswordFor(
+                             m => m.Contrasena,
+                             new
+                             {
+                                 @class = "form-control",
+                                 id = "Contrasena",
+                                 maxlength = "8",
+                                 minlength = "8",
+                                 autocomplete = "current-password",
+                                 placeholder = "Contraseña",
+                                 aria_label = "Contraseña"
+                             })
+
+                    <button type="button"
+                            class="password-toggle"
+                            id="togglePassword"
+                            aria-label="Mostrar contraseña">
+                        <i class="fa-regular fa-eye-slash"></i>
+                    </button>
+
+                    <span class="field-line"></span>
+
+                </div>
+
+
+
+                <!-- VALIDACIÓN MVC -->
+
+                @Html.ValidationSummary(
+                         true,
+                         "",
+                         new { @class = "text-danger" })
+
+
+
+                <!-- RECAPTCHA INFO -->
+
+                <div class="recaptcha-box">
+
+                    <div class="recaptcha-icon">
+                        <i class="fa-solid fa-shield-halved"></i>
+                    </div>
+
+                    <div>
+                        <strong>Este sitio está protegido con reCAPTCHA</strong>
+                        <small>
+                            Se aplican la <u>Política de Privacidad</u>
+                            y los <u>Términos de Servicio</u> de Google.
+                        </small>
+                    </div>
+
+                </div>
+
+
+
+                <!-- BOTÓN LOGIN -->
+
+                <button type="submit"
+                        class="btn-login"
+                        id="btnLogin">
+
+                    <span>Iniciar sesión</span>
+                    <i class="fa-solid fa-arrow-right"></i>
+
+                </button>
+
+
+
+                <!-- FORGOT -->
+
+                <a href="@Url.Action("ForgotPassword", "Account")"
+                   class="forgot">
+                    ¿Olvidaste tu contraseña?
+                </a>
+            }
+
+        </section>
+
+    </main>
+
+
+
+    <!-- ========================================================= -->
+    <!-- SCRIPTS                                                   -->
+    <!-- ========================================================= -->
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <script>
+        window.LoginConfig = {
+            loginUrl: '@Url.Action("Login", "Account")'
+        };
+    </script>
+
+    <script src="@Url.Content("~/Scripts/Login/Login.js")"></script>
+
+
+
+    <!-- ERROR DESDE EL CONTROLLER -->
+
+    @if (TempData["LoginError"] != null)
+    {
+        <script>
+            document.addEventListener("DOMContentLoaded", function () {
+                Swal.fire({
+                    icon: "error",
+                    title: "No fue posible iniciar sesión",
+                    text: @Html.Raw(Json.Encode(TempData["LoginError"])),
+                    confirmButtonText: "Aceptar",
+                    confirmButtonColor: "#7f2841"
+                });
+            });
+        </script>
+    }
+
+</body>
+
+</html>

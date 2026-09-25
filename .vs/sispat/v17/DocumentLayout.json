@@ -1,0 +1,88 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\Pepe Mart\u00EDnez\\OneDrive\\Desktop\\sispat\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{399DA0D7-90AA-4436-A500-6DE9AA647CA3}|sispat\\sispat.csproj|c:\\users\\pepe mart\u00EDnez\\onedrive\\desktop\\sispat\\sispat\\controllers\\logincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{399DA0D7-90AA-4436-A500-6DE9AA647CA3}|sispat\\sispat.csproj|solutionrelative:sispat\\controllers\\logincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{399DA0D7-90AA-4436-A500-6DE9AA647CA3}|sispat\\sispat.csproj|c:\\users\\pepe mart\u00EDnez\\onedrive\\desktop\\sispat\\sispat\\models\\login\\login.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{399DA0D7-90AA-4436-A500-6DE9AA647CA3}|sispat\\sispat.csproj|solutionrelative:sispat\\models\\login\\login.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{399DA0D7-90AA-4436-A500-6DE9AA647CA3}|sispat\\sispat.csproj|c:\\users\\pepe mart\u00EDnez\\onedrive\\desktop\\sispat\\sispat\\models\\login\\loginviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{399DA0D7-90AA-4436-A500-6DE9AA647CA3}|sispat\\sispat.csproj|solutionrelative:sispat\\models\\login\\loginviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{399DA0D7-90AA-4436-A500-6DE9AA647CA3}|sispat\\sispat.csproj|c:\\users\\pepe mart\u00EDnez\\onedrive\\desktop\\sispat\\sispat\\controllers\\principalcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{399DA0D7-90AA-4436-A500-6DE9AA647CA3}|sispat\\sispat.csproj|solutionrelative:sispat\\controllers\\principalcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 2,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "login.cs",
+              "DocumentMoniker": "C:\\Users\\Pepe Mart\u00EDnez\\OneDrive\\Desktop\\sispat\\sispat\\Models\\Login\\login.cs",
+              "RelativeDocumentMoniker": "sispat\\Models\\Login\\login.cs",
+              "ToolTip": "C:\\Users\\Pepe Mart\u00EDnez\\OneDrive\\Desktop\\sispat\\sispat\\Models\\Login\\login.cs",
+              "RelativeToolTip": "sispat\\Models\\Login\\login.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAKAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-09-25T21:30:33.827Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "LoginViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\Pepe Mart\u00EDnez\\OneDrive\\Desktop\\sispat\\sispat\\Models\\Login\\LoginViewModel.cs",
+              "RelativeDocumentMoniker": "sispat\\Models\\Login\\LoginViewModel.cs",
+              "ToolTip": "C:\\Users\\Pepe Mart\u00EDnez\\OneDrive\\Desktop\\sispat\\sispat\\Models\\Login\\LoginViewModel.cs",
+              "RelativeToolTip": "sispat\\Models\\Login\\LoginViewModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAlAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-09-25T21:28:16.997Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "LoginController.cs",
+              "DocumentMoniker": "C:\\Users\\Pepe Mart\u00EDnez\\OneDrive\\Desktop\\sispat\\sispat\\Controllers\\LoginController.cs",
+              "RelativeDocumentMoniker": "sispat\\Controllers\\LoginController.cs",
+              "ToolTip": "C:\\Users\\Pepe Mart\u00EDnez\\OneDrive\\Desktop\\sispat\\sispat\\Controllers\\LoginController.cs",
+              "RelativeToolTip": "sispat\\Controllers\\LoginController.cs",
+              "ViewState": "AgIAAA4AAAAAAAAAAAAwwB8AAAAwAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-09-25T21:26:12.533Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "PrincipalController.cs",
+              "DocumentMoniker": "C:\\Users\\Pepe Mart\u00EDnez\\OneDrive\\Desktop\\sispat\\sispat\\Controllers\\PrincipalController.cs",
+              "RelativeDocumentMoniker": "sispat\\Controllers\\PrincipalController.cs",
+              "ToolTip": "C:\\Users\\Pepe Mart\u00EDnez\\OneDrive\\Desktop\\sispat\\sispat\\Controllers\\PrincipalController.cs",
+              "RelativeToolTip": "sispat\\Controllers\\PrincipalController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-09-25T21:23:08.02Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
